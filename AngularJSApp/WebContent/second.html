@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="js/angular.js" ></script>
+<script src="js/myjs.js"></script>
+
+
+</head>
+<body >
+<center>
+<div ng-controller="MyController1">
+<h1>{{welcome}}</h1>
+</div>
+<hr/>
+<div ng-controller="MyController2">
+<p>EmpID:{{eid}}</p>
+<p>Name:{{ename}}</p>
+<p>Salary:{{salary}}</p>
+</div>
+<hr/>
+<div ng-controller="MyController3">
+<p>StudentID:{{student.sid}}</p>
+<p>Student Name:{{student.sname}}</p>
+<p>Student Marks:{{student.marks}}</p>
+</div>
+<hr/>
+
+
+
+ <h1>Student Details:</h1>
+   <br/>
+   <div   ng-controller="MyController4">
+   
+   Search: <input type="text" ng-model="searchdata" />
+   Hide Marks <input type="checkbox" ng-model="marks" />  <!--  Select: marks=true  Deselect: marks=false -->
+   <table border="1">
+   <tr><th>SID</th><th>Name</th><th ng-hide="marks"> Marks</th></tr>
+     
+   <tr  ng-repeat='stud in students | filter:searchdata'>
+      <td>{{stud.sid  }}</td>
+	  <td>{{stud.name | uppercase }}</td>
+	  <td ng-hide="marks">{{stud.marks | number:2 }}</td>
+   </tr>
+   </table>
+   </div>
+
+
+ <h1>Employee Details(from Server Side):</h1>
+   <br/>
+   <div   ng-controller="MyController5">
+   
+   Search: <input type="text" ng-model="searchdata" />
+   Hide  <input type="checkbox" ng-model="marks" />  <!--  Select: marks=true  Deselect: marks=false -->
+   <table border="1">
+   <tr><th>EID</th><th>Name </th><th ng-hide="marks"> Salary</th><th>Address</th><th>Email</th><th>Joining Date</th></tr>
+     
+   <tr  ng-repeat="emp in employees | filter:searchdata  | orderBy : '-eid'">
+      <td>{{emp.eid  }}</td>
+	  <td>{{emp.ename | uppercase }}</td>
+	  <td ng-hide="marks">{{emp.salary | currency:"$":1 }}</td>
+	  <td>{{emp.address  }}</td>
+	  <td>{{emp.email  }}</td>
+      <td>{{emp.joiningdate  }}</td>
+	</tr>
+   </table>
+   </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+</center>>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
